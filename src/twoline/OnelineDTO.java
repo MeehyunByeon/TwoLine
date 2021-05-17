@@ -12,6 +12,14 @@ public class OnelineDTO {
 		this.wdate = wdate;
 	}
 	
+	public int delete() {
+		return 0;
+	}
+	public void delete(int no) 
+	{
+		this.no = no;
+	}
+	
 	public OnelineDTO() {
 		super();
 	}	
@@ -22,16 +30,19 @@ public class OnelineDTO {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	
 	public String getMemo() {
 		return memo;
 	}
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+	
 	public String getWdate() {
 		return wdate;
 	}
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
+
 }

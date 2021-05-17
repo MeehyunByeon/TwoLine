@@ -3,23 +3,27 @@
 <%@ page import="java.sql.*" %>    
 <%@ page import="twoline.OnelineDTO" %>
 <%@ page import="twoline.OnelineDAO" %>
-   
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>memo_write</title>
+<title>memo_delete</title>
 </head>
+<body>
+
 <%
 	request.setCharacterEncoding("UTF-8");
-	String memo = request.getParameter("memo");
+	int no = Integer.parseInt(request.getParameter("no"));
 	
 	OnelineDAO dao = new OnelineDAO();
 	OnelineDTO dto = new OnelineDTO();
-
-	dto.setMemo(memo);
-	dao.insert(dto);
+	
+	dto.delete(no);
+	dao.delete(dto);
 
 	response.sendRedirect("memo_list.jsp");
+	
 %>
+</body>
 </html>

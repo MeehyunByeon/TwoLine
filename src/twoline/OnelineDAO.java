@@ -26,7 +26,6 @@ public class OnelineDAO {  // Data Access Object
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, passwd);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -57,7 +56,6 @@ public class OnelineDAO {  // Data Access Object
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -83,7 +81,6 @@ public class OnelineDAO {  // Data Access Object
 			pstmt.setString(1, dto.getMemo());
 			pstmt.executeUpdate(); // select
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -97,11 +94,25 @@ public class OnelineDAO {  // Data Access Object
 	
 	public void delete(OnelineDTO dto)
 	{
-		
+		Connection con = null;
+		String sql = "delete from oneline where no = (\" + no +\")\"";
+		PreparedStatement pstmt = null;
+
+		try {
+			con = connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.delete());
+			pstmt.executeUpdate(); // select
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
-	public void delete(int no) 
-	{
-	
-	}
 }
