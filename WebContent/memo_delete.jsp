@@ -19,8 +19,7 @@
 	OnelineDAO dao = new OnelineDAO();
 	OnelineDTO dto = new OnelineDTO();
 	
-	dto.delete(no);
-	dao.delete(dto);
+	dao.delete(no);
 
 	response.sendRedirect("memo_list.jsp");
 	

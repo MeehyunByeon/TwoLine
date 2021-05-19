@@ -12,14 +12,6 @@ public class OnelineDTO {
 		this.wdate = wdate;
 	}
 	
-	public int delete() {
-		return 0;
-	}
-	public void delete(int no) 
-	{
-		this.no = no;
-	}
-	
 	public OnelineDTO() {
 		super();
 	}	

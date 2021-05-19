@@ -13,11 +13,11 @@ public class OnelineDAO {  // Data Access Object
 	private String user;
 	private String passwd;
 	
-	public OnelineDAO() // 셍성자
+	public OnelineDAO() // 생성자
 	{
 		this.url ="jdbc:mysql://localhost/world?characterEncoding=UTF-8&serverTimezone=UTC";
 		this.user = "root";
-		this.passwd = "bmh@392766";
+		this.passwd = "1234";
 	}
 	
 	private Connection connect() {
@@ -92,27 +92,28 @@ public class OnelineDAO {  // Data Access Object
 		}
 	}
 	
-	public void delete(OnelineDTO dto)
+	public void delete(int no)
 	{
 		Connection con = null;
-		String sql = "delete from oneline where no = (\" + no +\")\"";
+		String sql = "delete from oneline where no = ("+ no +")";
 		PreparedStatement pstmt = null;
 
 		try {
 			con = connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, dto.delete());
 			pstmt.executeUpdate(); // select
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(pstmt != null) pstmt.close();
-				if(con != null) con.close();
+					if(pstmt != null) pstmt.close();
+					if(con != null) con.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
+	
+	
 	
 }
